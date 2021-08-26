@@ -11,10 +11,6 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 const FORMAT = "yyyy-MM-dd";
 
 
-
-
-
-
 function Content() {
 
     const [items, setItems] = useState([]);
@@ -25,7 +21,7 @@ function Content() {
 
     const formattedDate = (dateInput) => {
         const initialDate = dateInput.toISOString().subString(0, 10);
-        console.log(initialDate);
+        // console.log(initialDate);
 
         setDate(initialDate);
     }
@@ -50,6 +46,7 @@ function Content() {
     //(means it loads when the actual component is not rendered)
     //this will act as componentWillmount in class based component.
     useEffect(() => {
+
         const localStorageData = JSON.parse(localStorage.getItem("fetched-data"));
 
         if (localStorageData) {
