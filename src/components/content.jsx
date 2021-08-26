@@ -31,10 +31,10 @@ function Content() {
     useEffect(() => {
 
         const getArticles = async () => {
-            const res = await Axios.get(`https://newsapi.org/v2/top-headlines?country=us&from=${date}&page=1&pageSize=5&apiKey=31ff968bcf534234a556cb5022e0888a`)
+            const res = await Axios.get(`https://newsapi.org/v2/top-headlines?country=us&from=${date}&page=1&pageSize=5&apiKey=889c04b5a7e844c8bf6bbf5e1ac65732`)
 
             setItems(res.data.articles);
-            console.log("re-rendering");
+            // console.log("re-rendering");
             // setPage(1); 
         }
 
@@ -68,7 +68,7 @@ function Content() {
 
     const fetchNews = async () => {
 
-        const res = await Axios.get(`https://newsapi.org/v2/top-headlines?country=us&from=${date}&page=${page}&pageSize=5&apiKey=31ff968bcf534234a556cb5022e0888a`);
+        const res = await Axios.get(`https://newsapi.org/v2/top-headlines?country=us&from=${date}&page=${page}&pageSize=5&apiKey=889c04b5a7e844c8bf6bbf5e1ac65732`);
 
         const finalData = res.data.articles;
 
