@@ -3,26 +3,12 @@ import { useEffect, useState } from "react";
 import Newsitem from "./newsItem.jsx";
 import Axios from "axios";
 import InfiniteScroll from 'react-infinite-scroll-component';
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-import 'react-day-picker/lib/style.css';
-import dateFnsFormat from "date-fns/format";
 
 
 
 // to convert the daypickerinput value to string and below is the standard format.
 
 const FORMAT = "yyyy-MM-dd";
-
-function formatDate(date, format, locale) {
-    return dateFnsFormat(date, format, { locale });
-}
-
-const formattedDate = (date) => {
-    return new Date().toISOString().substring(0, 10);
-}
-
-
-
 
 
 
@@ -34,11 +20,15 @@ function Content() {
     const [items, setItems] = useState([]);
     const [hasMore, setHasMore] = useState(true);
     const [page, setPage] = useState(2);
-    const [date, setDate] = useState(null);
+    const [date, setDate] = useState("");
 
 
+    const formattedDate = (dateInput) => {
+        const initialDate = dateInput.toISOString().subString(0, 10);
+        console.log(initialDate);
 
-    //  console.log(formattedDate);
+        setDate(initialDate);
+    }
 
 
     //acts as componentDidMount which is responsible for first render.
@@ -60,14 +50,9 @@ function Content() {
     //(means it loads when the actual component is not rendered)
     //this will act as componentWillmount in class based component.
     useEffect(() => {
-
-        console.log("getting info from local storage....");
-
         const localStorageData = JSON.parse(localStorage.getItem("fetched-data"));
 
         if (localStorageData) {
-
-            console.log("local storage has data to be loaded/....");
             setItems(localStorageData);
         }
 
@@ -77,7 +62,7 @@ function Content() {
 
     //after first render this hooks update the data into localstorage
     useEffect(() => {
-        console.log("setting item in local storage");
+
 
         localStorage.setItem("fetched-data", JSON.stringify(items));
 
@@ -86,7 +71,7 @@ function Content() {
 
     const fetchNews = async () => {
 
-        const res = await Axios.get(`https://newsapi.org/v2/top-headlines?country=us&from=${date}&page=${page}&pageSize=5&apiKey=31ff968bcf534234a556cb5022e0888a`)
+        const res = await Axios.get(`https://newsapi.org/v2/top-headlines?country=us&from=${date}&page=${page}&pageSize=5&apiKey=31ff968bcf534234a556cb5022e0888a`);
 
         const finalData = res.data.articles;
 
@@ -117,11 +102,7 @@ function Content() {
     return (
         <main className="container">
 
-            <div className="date-container">
-                <label htmlFor="selectDate"><strong>Choose date:</strong> </label>
-                <DayPickerInput onDayChange={(day) => setDate(formattedDate(day))} placeholder={`${dateFnsFormat(new Date(), FORMAT)}`} formatDate={formatDate}
-                    format={FORMAT} />
-            </div>
+            <input type="date" value={date} onChange={(event) => formattedDate(event.target.value)} />
 
             <InfiniteScroll
 
