@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  font-size: medium;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.header {
+  color: #fff;
+  padding: 0.6rem;
+  text-align: center;
+  width: 100%;
+  height: 15%;
+  background-color: #1a2238;
+}
+
+#tag2 {
+  color: #ff6a3d;
+}
+
+input {
+  border: none;
+  margin-bottom: 0.5rem;
+  padding: 0.4rem;
+  border-radius: 6px;
+}
+
+#root {
+  margin: 0;
+}
+
+.container {
+  height: 75%;
+  background-color: rgba(238, 231, 231, 0.432);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-container {
+  margin-top: 10px;
+  width: fit-content;
+  height: fit-content;
+}
+
+.news-item-style {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.904);
+  padding: 1rem;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 60%;
+  height: 230px;
+  border: 1px solid rgb(240, 234, 234);
+  box-shadow: 2px 4px 5px rgba(36, 35, 35, 0.199);
+  margin-bottom: 5px;
+}
+
+small {
+  position: absolute;
+  top: 10px;
+  color: rgba(143, 134, 134, 0.692);
+}
+
+.news-item-style .description {
+  width: 60%;
+  min-height: auto;
+  font-size: small;
+}
+
+img {
+  padding: 0.5rem;
+  width: 150px;
+  height: 150px;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 0.7rem;
+  }
+
+  .news-item-style {
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 2px 4px 5px rgba(36, 35, 35, 0.199);
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  small {
+    position: absolute;
+    top: 0;
+    bottom: 10px;
+  }
+}
