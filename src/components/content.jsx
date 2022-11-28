@@ -8,7 +8,6 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 // to convert the daypickerinput value to string and below is the standard format.
 
-const FORMAT = "yyyy-MM-dd";
 
 
 function Content() {
